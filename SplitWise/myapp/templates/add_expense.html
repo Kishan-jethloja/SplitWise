@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Expense - {{ group.name }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Add Expense to {{ group.name }}</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description" name="description" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" class="form-control" id="amount" name="amount" step="0.01" min="0.01" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="split_type" class="form-label">Split Type</label>
+                        <select class="form-select" id="split_type" name="split_type" onchange="toggleSplitFields()">
+                            <option value="equal">Equal Split</option>
+                            <option value="percentage">Percentage Split</option>
+                        </select>
+                    </div>
+
+                    <div id="percentage-fields" style="display: none;">
+                        <h6 class="mb-3">Percentage Distribution</h6>
+                        {% for member in members %}
+                            <div class="mb-3">
+                                <label for="percentage_{{ member.id }}" class="form-label">{{ member.username }}</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control percentage-input" 
+                                           id="percentage_{{ member.id }}" 
+                                           name="percentage_{{ member.id }}"
+                                           min="0" max="100" step="0.01" value="0">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="alert alert-info">
+                            Total: <span id="total-percentage">0</span>%
+                            <div id="percentage-warning" class="text-danger" style="display: none;">
+                                Total percentage must equal 100%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-end">
+                        <a href="{% url 'group_detail' group.id %}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary" id="submit-btn">Add Expense</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleSplitFields() {
+    const splitType = document.getElementById('split_type').value;
+    const percentageFields = document.getElementById('percentage-fields');
+    
+    if (splitType === 'percentage') {
+        percentageFields.style.display = 'block';
+    } else {
+        percentageFields.style.display = 'none';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const percentageInputs = document.querySelectorAll('.percentage-input');
+    const totalSpan = document.getElementById('total-percentage');
+    const warning = document.getElementById('percentage-warning');
+    const submitBtn = document.getElementById('submit-btn');
+
+    function updateTotal() {
+        let total = 0;
+        percentageInputs.forEach(input => {
+            total += parseFloat(input.value || 0);
+        });
+        totalSpan.textContent = total.toFixed(2);
+        
+        if (total !== 100) {
+            warning.style.display = 'block';
+            submitBtn.disabled = true;
+        } else {
+            warning.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    }
+
+    percentageInputs.forEach(input => {
+        input.addEventListener('input', updateTotal);
+    });
+});
+</script>
+{% endblock %} 

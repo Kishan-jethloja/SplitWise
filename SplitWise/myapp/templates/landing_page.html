@@ -1,0 +1,51 @@
+{% extends 'landing_base.html' %}
+
+{% block title %}Welcome - Expense Sharing{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Split Expenses Easily</h1>
+            <p class="hero-subtitle">Keep track of shared expenses, balances, and who owes who. Make expense sharing simple and hassle-free.</p>
+            <a href="{% url 'register' %}" class="btn btn-light btn-lg">Get Started</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h3 class="feature-title">Create Groups</h3>
+                    <p class="feature-text">Create groups for different occasions and add members easily.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-receipt"></i>
+                    </div>
+                    <h3 class="feature-title">Track Expenses</h3>
+                    <p class="feature-text">Add expenses and split them equally or by percentage.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-cash-stack"></i>
+                    </div>
+                    <h3 class="feature-title">Settle Up</h3>
+                    <p class="feature-text">Record payments and keep track of who owes who.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
