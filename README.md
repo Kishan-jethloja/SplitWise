@@ -1,9 +1,9 @@
-#💰SplitWise - Smart Expense Sharing System
+# 💰SplitWise - Smart Expense Sharing System
 
-##🌟Overview
+## 🌟Overview
 Split-Wise is a comprehensive expense sharing system developed using Django framework. This project aims to simplify the process of splitting bills and managing shared expenses among friends, roommates, and groups, making it easier to track who owes whom and settle debts efficiently.
 
-##🤝Contributors
+## 🤝Contributors
 This project is a collaborative effort between:
 
 Kishan Jethloja
@@ -11,7 +11,7 @@ Madhav Javia
 
 As part of our academic journey in web development, we combined our skills and creativity to build this innovative expense management platform that helps people manage their shared finances effortlessly.
 
-##🚀Features
+## 🚀Features
 - User Authentication and Authorization
 - Group Creation and Management
 - Expense Tracking and Splitting
@@ -19,13 +19,13 @@ As part of our academic journey in web development, we combined our skills and c
 - Admin Dashboard
 - Responsive Design
 
-##⚙️Technology Stack
+## ⚙️Technology Stack
 - Backend Framework: Django 5.1.3+
 - Database: SQLite
 - Frontend: HTML, CSS, JavaScript
 - Template Engine: Django Templates
 
-##📁Project Structure
+## 📁Project Structure
 ```
 SplitWise/
 ├── myapp/              # Main application directory
@@ -44,7 +44,7 @@ SplitWise/
 └── manage.py          # Django management script
 ```
 
-##🖥️Installation and Setup
+## 🖥️Installation and Setup
 1. **Clone the repository**
 ```bash
 git clone https://github.com/Kishan-jethloja/SplitWise.git
@@ -75,7 +75,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-##🔐Login
+## 🔐Login
 ### Admin Login
 The admin can log in using superuser credentials. If you have not created one yet, run:
 ```bash
@@ -85,21 +85,21 @@ python manage.py createsuperuser
 ### User Login
 Users can log in through the Login Page using their credentials. New users can sign up via the Signup Page.
 
-##🔍Explore Features
-###👤For Users:
+## 🔍Explore Features
+### 👤For Users:
 - Create and join groups
 - Add and split expenses
 - Track balances
 - View expense history
 - Settle debts
 
-###👨‍💼For Admins:
+### 👨‍💼For Admins:
 - Manage users
 - View all groups
 - Monitor system activity
 - Access admin dashboard
 
-##📌Closing Remarks
+## 📌Closing Remarks
 This project demonstrates practical implementation of Django web development and aims to solve real-world problems in expense sharing. We hope SplitWise continues to evolve with more advanced features in the future, helping create smarter and more efficient ways to manage shared expenses.
 
 Feel free to fork this repository and make improvements. Your contributions are welcome!
